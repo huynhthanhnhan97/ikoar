@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./resources/css/stylesFE.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <script src="./resources/js/lib/jquery.min.js"></script>
+    <script src="./resources/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+    <script src="./resources/js/references.js"></script>
+
+    <!-- <meta http-equiv="refresh" content="2;url=FirstSrceen.html" /> -->
+</head>
+
+<body class="greenBox">
+    <!-- <img src="intro.gif" class="fullScreen"> -->
+    <div id="gif" class="greenBox" style="display: none;">
+        <!-- <img src="./resources/image/intro2.gif" class="fullScreen"> -->
+        <div class="greenBox"></div>
+    </div>
+    <div id="intro" style="display: none;">
+        <div class="textBox">
+            <label> This is website was reponsed by Kyanon</label>
+            <ul>
+                <li>
+                    The Website include 3 main functionarities: AR with Marker, AR when Shaing, AR without marker
+                </li>
+                <li>
+                    To achieve the best experience in the wedsite, you have to allow us to access your device camera
+                </li>
+                <li>
+                    About AR with Marker, you have to Scan the Kyanon namecard to see the object
+                </li>
+                <li>
+                    About AR when Shaking, you have to shake your phone to see the object in space
+                </li>
+                <li>
+                    About AR without Marker, you have to setup the surface to see the object
+                </li>
+            </ul>
+
+            <label class="author">Developed by Interactive Tribe</label>
+        </div>
+
+        <button id="btnStart" type="button" class="box" Onclick="window.location.href='AR.html'">Start</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                var gifDiv = document.getElementById('gif');
+                gifDiv.style.display = 'block';
+                var imgDiv = document.createElement("img");
+                imgDiv.src = "./resources/image/intro2.gif";
+                imgDiv.className = "fullScreen";
+                gifDiv.appendChild(imgDiv);
+
+                setTimeout(function () {
+                    document.getElementById('gif').style.display = 'none';
+                    if(!mobileCheck()){
+                        document.getElementById('btnStart').style.display = 'none';
+                        document.getElementsByClassName('textBox')[0].textContent = "Please use mobile device for the best experience!";
+                    }
+                    document.getElementById('intro').style.display = 'block';
+                        document.body.className = "backgound1";
+                }, 2500);
+            }, 1000);
+        })
+    </script>
+</body>
+
+</html>

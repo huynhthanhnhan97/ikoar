@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="./resources/css/stylesFE.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <script src="./resources/js/lib/jquery.min.js"></script>
+    <script src="./resources/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body class="backgound1">
+    <div id="main">
+        <script>
+            function notice() {
+                alert('This functionarity is in processing');
+            }
+        </script>
+        <div class="btn-group-vertical rounded">
+            <button type="button" class="btn rounded" Onclick="window.location.href='index_marker.html'">Marker</button>
+            <button type="button" class="btn rounded" Onclick="window.location.href='index_shake.html'">Shake</button>
+            <!-- <button type="button" class="btn rounded" Onclick="window.location.href='index_markerless.html'">Markerless</button> -->
+            <button type="button" class="btn rounded" Onclick="notice()">Markerless</button>
+        </div>
+    </div>
+    <div id="denyCamera" style="display: none;">
+        <div class="textBox">
+            <label>You have just denied the Camera access permission or your camera is not available so we can not offer
+                you the best experience of the website. Please, set the permission again!</label>
+        </div>
+        <button type="button" class="box" id="refresh">OK</button>
+    </div>
+    <script>
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            var hint = {
+                audio: false,
+                video: true
+            };
+            if (window.innerWidth < 800) {
+                var width = (window.innerWidth < window.innerHeight) ? 480 : 640;
+                var height = (window.innerWidth < window.innerHeight) ? 480 : 640;
+
+                var aspectRatio = window.innerWidth / window.innerHeight;
+
+                hint = {
+                    audio: false,
+                    video: {
+                        facingMode: 'environment',
+                        width: {
+                            min: width,
+                            max: width
+                        },
+                        height: {
+                            min: height,
+                            max: height
+                        }
+                    },
+                };
+            }
+
+
+            navigator.mediaDevices.getUserMedia(hint).then(function (stream) {
+            }).catch(function (err) {
+
+                console.log(err.name + ": " + err.message);
+                document.getElementById('main').style.display = 'none';
+                document.getElementById('denyCamera').style.display = 'block';
+
+                $('#refresh').click(function () {
+                    // window.location.reload(true);
+                    // navigator.mediaDevices.getUserMedia(hint).then(function (stream) {
+                    // }).catch(function (err) {
+
+                    //     console.log(err.name + ": " + err.message);
+                    //     document.getElementById('main').style.display = 'none';
+                    //     document.getElementById('denyCamera').style.display = 'block';
+                    // })
+                    // navigator.permissions.query({name: 'camera'}).then(function(result){
+                    //     if(result.state == 'denied'){
+                    //         console.log('denied')
+                    //         navigator.mediaDices.
+                    //     }
+                    // })
+                    navigator.permissions({name: 'camera'}).then(result => {
+                        console.log(result);
+                    });
+                });
+            });
+        }
+    </script>
+</body>

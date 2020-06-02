@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive 3D Character with Three.js | Codrops</title>
+    <meta name="description" content="Demo for the tutorial on how to add an interactive 3D character to a website." />
+    <meta name="keywords" content="3d model, three.js, tutorial, interactive, website, web development" />
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./resources/css/style.css">
+	<script src="./resources/js/controller/mouseEvent_shake_ar.js"></script>
+	<script src="./resources/js/controller/pickControl_shake_ar.js"></script>
+
+</head>
+
+<body>
+    <div class="app">
+        <!-- <label id="text" style="position: absolute; z-index: 1000;">Text: </label> -->
+        <video loop autoplay muted playsinline id="video"></video>
+        <!-- The canvas element is used to draw the 3D scene -->
+        <canvas id="canvas"></canvas>
+    </div>
+    <!-- The main Three.js file -->
+    <script src='./resources/js/lib/three.min.js'></script>
+    <!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+    <script src='./resources/js/lib/GLTFLoader.js'></script>
+    <script src="./resources/js/references.js"></script>
+    <script src="./resources/js/stream.js"></script>
+
+    <script type="module">
+
+        import * as THREE from './resources/js/lib/three.module.js';
+
+    </script>
+    <!-- partial -->
+    <script type="module" src="./resources/js/markerless/main_markerless.js"></script>
+
+</body>
+
+</html>

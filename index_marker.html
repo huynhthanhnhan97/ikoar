@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <!-- <style>
+        body {
+            margin: 0;
+        }
+    </style> -->
+    <style>
+        #c {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            font-family: "samsung";
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+    <script src="./resources/js/lib/three.min.js"></script>
+    <!-- <script src="./resources/js/GLTFLoader.js"></script> -->
+
+    <script src="./resources/js/lib/artoolkit.min.js"></script>
+    <script src="./resources/js/marker/artoolkit.three.js"></script>
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <link rel="stylesheet" href="./resources/css/stylesFE.css">
+    <!-- <script src="./resources/js/ParticalSystem.js"></script> -->
+    <!-- <script src="./resources/js/initAR.js"></script> -->
+    <script src="./resources/js/references.js"></script>
+    <script src="./resources/js/marker/configContent.js"></script>
+    <script src="./resources/js/marker/htmlStyle.js"></script>
+    <script src="./resources/js/marker/modelManager.js"></script>
+    <script src="./resources/js/controller/mouseEvent_marker.js"></script>
+    <!-- <script src="./resources/js/controller/checkShake.js"></script> -->
+    <script src="./resources/js/controller/pickControl.js"></script>
+    <script src="./resources/js/marker/highlight.js"></script>
+    <script src="./resources/js/lib/GLTFLoader.js"></script>
+    <script src="./resources/js/information.js"></script>
+</head>
+
+<body>
+    <!-- <script type="module">
+        import { EffectComposer } from './resources/js/lib/postprocessing/EffectComposer.js'; import { RenderPass } from './resources/js/lib/postprocessing/RenderPass.js'; import { ShaderPass } from './resources/js/lib/postprocessing/ShaderPass.js'; import {
+        OutlinePass } from './resources/js/lib/postprocessing/OutlinePass.js'; import * as THREEModule from './resources/js/lib/postprocessing/three.module.js'; window['EffectComposer'] = EffectComposer; window['RenderPass'] = RenderPass; window['ShaderPass']
+        = ShaderPass; window['OutlinePass'] = OutlinePass; window['THREEModule'] = THREEModule;
+    </script> -->
+    <div id="renderCanvas"></div>
+    <label id="notice"></label>
+    <label id="scanMarker" class="scanMarker">Scan Marker</label>
+    <!-- <button type="button" style="position: relative; margin-left: 0px;" class="box"
+        Onclick="window.location.href='AR.html'">Back</button> -->
+    <script src="./resources/js/marker/main_marker.js"></script>
+    <script>
+        const config = {
+            // modelLink: './resources/models/magic_witch/scene.gltf',
+            modelLink: './resources/models/S20.gltf',
+            dataNFTLink: 'https://raw.githubusercontent.com/huynhthanhnhan/MyImage/master/nft/Kyanon',
+            cameraParam: './resources/camera_para/camera_para-iPhone 5 rear 640x480 1.0m.dat',
+            onPickModel: function (objectName) {
+                var listContent;
+                switch (objectName) {
+                    case "Screen":
+                        listContent = list_Front_Content;
+                        break;
+                    case "BackCamera":
+                        listContent = list_Camera_Content;
+                        break;
+                    case "FrontCamera":
+                        listContent = list_Back_Content;
+                        break;
+                }
+                createInformationDiv(listContent,"marker");
+            }
+        }
+        var ar = new AR();
+        async function init() {
+            await ar.initAR(config).then((resolve) => {
+                ar.setAnimation(true);
+            })
+        };
+        init();
+    </script>
+</body>
+
+
+</html>

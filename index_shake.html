@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="./resources/css/style.css">
+	<link rel="stylesheet" href="./resources/css/cooldown.css">
+	<script src="./resources/js/controller/mouseEvent_shake_ar.js"></script>
+	<script src="./resources/js/controller/pickControl_shake_ar.js"></script>
+	<script src="./resources/js/shake/shake_motion.js"></script>
+	<script src="./resources/js/references.js"></script>
+	<script src="./resources/js/stream.js"></script>
+	<script src="./resources/js/information.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+	<link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="./resources/bootstrap-4.5.0-dist/css/bootstrap.min.css">
+	<script src="./resources/js/lib/jquery.min.js"></script>
+    <script src="./resources/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<!-- <div id="note" class="note" onclick="noteClick()">
+        <ul class="noteContent">
+            <li>"Vi xử lý mạnh mẽ mang tên Exynos 990 với xung nhịp cao nhất có thể đạt tới 2.73 GHz",</li>
+            <li>"Dung lượng RAM 12 GB và bộ nhớ trong 128 GB, hỗ trợ thẻ nhớ ngoài lên đến 1T",</li>
+            <li>"điểm hiệu năng mạnh mẽ lên tới 503.122 điểm",</li>
+            <li>"Pin dung lượng lớn 5000 mAh có hỗ trợ sạc nhanh 45 W",</li>
+            <li>"Chế độ sạc không dây công suất 15W"</li>
+        </ul>
+    </div>
+	<script>
+		// createInformationDiv(document.body);
+		function noteClick() {
+            document.getElementById("note").style.display = "none";
+        }
+	</script> -->
+	<div class="progress">
+		<div id="cooldownBar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+			aria-valuemax="100" style="width:100%; z-index: 40; display: none;">
+		</div>
+	</div>
+	<label class="noticeText" id="noticeText">Shake your phone</label>
+	<div class="loading" id="divLoading" style="zoom: 1; margin-top: 0;">
+	</div>
+	<div class="app">
+		<video loop autoplay muted playsinline id="video"></video>
+		<!-- The canvas element is used to draw the 3D scene -->
+		<canvas id="canvas"></canvas>
+	</div>
+	<div id="divCooldown" style="display: none;"></div>
+
+	<!-- The main Three.js file -->
+	<script src='./resources/js/lib/three.min_shake_ar.js'></script>
+	<!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
+	<script src='./resources/js/lib/GLTFLoader.js'></script>
+	<script src="./resources/js/lib/OrbitControls.js"></script>
+
+	<script src="./resources/js/shake/main_shake_ar.js"></script>
+	<script src="./resources/js/shake/cooldown.js"></script>
+
+</body>
+
+</html>
